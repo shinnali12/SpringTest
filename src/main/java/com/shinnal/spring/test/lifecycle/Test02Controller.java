@@ -8,11 +8,13 @@ import java.util.Map;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RequestMapping("/lifecycle/test02")
 @RestController
 public class Test02Controller {
+
 
 	@RequestMapping("/1")
 	public List<Map<String, Object>> listResponse() {
@@ -28,7 +30,7 @@ public class Test02Controller {
 		movieMap = new HashMap<>();
 		movieMap.put("rate", 0);
 		movieMap.put("director", "로베르토 베니니");
-		movieMap.put("time", 166);
+		movieMap.put("time", 116);
 		movieMap.put("title", "인생은 아름다워");
 		movieList.add(movieMap);
 		
@@ -57,12 +59,14 @@ public class Test02Controller {
 		
 	}	
 	
+
 	@RequestMapping("/2")
 	public List<Board> objectResponse() {
 		
-//		Board post = new Board("안녕하세요 가입인사 드립니다.", "hagulu", "안녕하세요 가입했어요. 앞으로 잘 부탁 드립니다. 활동 열심히 하겠습니다.");
-		
 		List<Board> boardList = new ArrayList<Board>();
+		
+//		Board board = new Board("안녕하세요 가입인사 드립니다.", "hagulu", "안녕하세요 가입했어요. 앞으로 잘 부탁 드립니다. 활동 열심히 하겠습니다.");
+//		boardList.add(board);		
 		
 		boardList.add(new Board("안녕하세요 가입인사 드립니다.", "hagulu", "안녕하세요 가입했어요. 앞으로 잘 부탁 드립니다. 활동 열심히 하겠습니다."));
 		boardList.add(new Board("헐 대박", "bada", "오늘 목요일이 었어... 금요일인줄"));
@@ -75,9 +79,9 @@ public class Test02Controller {
 	@RequestMapping("/3")
 	public ResponseEntity<Board> entityResponse() {
 		
-		Board post = new Board("안녕하세요 가입인사 드립니다.", "hagulu", "안녕하세요 가입했어요. 앞으로 잘 부탁 드립니다. 활동 열심히 하겠습니다.");
+		Board board = new Board("안녕하세요 가입인사 드립니다.", "hagulu", "안녕하세요 가입했어요. 앞으로 잘 부탁 드립니다. 활동 열심히 하겠습니다.");
 		
-		ResponseEntity<Board> entity = new ResponseEntity<>(post, HttpStatus.INTERNAL_SERVER_ERROR);
+		ResponseEntity<Board> entity = new ResponseEntity<>(board, HttpStatus.INTERNAL_SERVER_ERROR);
 		
 		return entity;
 	}

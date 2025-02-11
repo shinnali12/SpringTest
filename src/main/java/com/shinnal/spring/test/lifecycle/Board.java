@@ -13,6 +13,11 @@ public class Board {
 		
 	}
 	
+	@Override
+	public String toString() {
+		return "제목 : " + title + "\n작성자 : " + user + "\n" + content;
+	}
+	
 	public String getTitle() {
 		return title;
 	}
