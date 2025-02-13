@@ -1,0 +1,23 @@
+package com.shinnal.spring.test.mybatis.repository;
+
+import java.util.List;
+
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
+
+import com.shinnal.spring.test.mybatis.domain.RealEstate;
+
+@Mapper
+public interface RealEstateRepository {
+	
+//	1
+	public RealEstate selectRealEstate(@Param("id") int id);
+	
+//	2
+	public List<RealEstate> selectRealEstateRentPrice(@Param("rentPrice") int rentPrice);
+	
+//	3
+	public List<RealEstate> selectRealEstateAreaPrice(@Param("area") int area, @Param("price") int price);
+	
+}
+
