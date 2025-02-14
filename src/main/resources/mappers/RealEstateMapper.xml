@@ -41,7 +41,8 @@
  	 		
  	</select>
  	
- 	<select id="selectRealEstateAreaPrice" resultType="com.shinnal.spring.test.mybatis.domain.RealEstate" parameterType="int">
+ 	<select id="selectRealEstateAreaPrice" resultType="com.shinnal.spring.test.mybatis.domain.RealEstate" parameterType="map">
+ 	<!-- parameter가 여러가지가 있을 경우 type은 map으로 넣어주기!! -->
  		SELECT
  			`id`
  			, `realtorId`
@@ -55,12 +56,61 @@
  		FROM
  			`real_estate`
  		WHERE	
- 			`area` &gt; #{area} AND `price` &lt; #{price}
+ 			<![CDATA[ `type` = '매매' AND `area` >= #{area} AND `price` <= #{price}]]>
+ 			<!-- ${} 중간에 값을 끼워넣을때 사용 #{} 정확한 값을 입력할때 사용 -->
  		
  		ORDER BY 
  			`createdAt` DESC	
  		 
  	</select>
+ 	
+ 	<insert id="insertRealEstateCreate" parameterType="com.shinnal.spring.test.mybatis.domain.RealEstate">
+ 		INSERT INTO
+ 			`real_estate`
+ 		(	
+ 			`realtorId`
+ 			, `address`
+ 			, `area`
+ 			, `type`
+ 			, `price`
+ 		)	
+ 		VALUE
+ 		( <!-- 객체 값을 받는 -->
+ 			#{realtorId}
+ 			, #{address}
+ 			, #{area}
+ 			, #{type}
+ 			, #{price}
+ 		)
+ 	</insert>
+ 	
+ 	<insert id="insertRealEstateObject" parameterType="map">
+ 		INSERT INTO
+ 			`real_estate`
+ 		(	
+ 			`realtorId`
+ 			, `address`
+ 			, `area`
+ 			, `type`
+ 			, `price`
+ 			, `rentPrice`
+ 		)	
+ 		VALUE
+ 		( <!-- 파라미터를 받는 -->
+ 			#{realtorId}
+ 			, #{address}
+ 			, #{area}
+ 			, #{type}
+ 			, #{price}
+ 			, #{rentPrice}
+ 		)
+ 	</insert>
+ 	
+ 	<insert id="upDateRealEstate" parameterType="com.shinnal.spring.test.mybatis.domain.RealEstate">
+ 		UPDATE `real_estate` SET `type` = '전세', `price` = '70000', WHERE `id`= 21
+ 	
+ 	</insert>
+ 	
  	 
  </mapper>
  
