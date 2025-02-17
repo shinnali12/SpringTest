@@ -96,7 +96,7 @@ public class RealEstateController {
 	
 	@ResponseBody
 	@RequestMapping("/update/1")
-	public String realEstateUpdate() {
+	public String upDateRealEstate() {
 		
 		RealEstate realEstate = new RealEstate();
 		realEstate.setId(21); 
@@ -108,6 +108,22 @@ public class RealEstateController {
 		return "수정 성공 : " + count;		
 				
 	}
+	
+//	update 쿼리 풀이
+//	
+//	@ResponseBody
+//	@RequestMapping("/update")
+//	public String realEstateUpdate() {
+//		
+//	id가 22 인 매물정보의 type 을 전세로 바꾸고 가격을 70000으로 변경		
+//				
+//		int count = realEstateService.updateRealEstate(21, "전세", 70000);
+//				
+//		return "수정 성공 : " + count;		
+//				
+//	}
+	
+	
 	
 //	delete 쿼리	
 	@ResponseBody

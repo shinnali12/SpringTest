@@ -37,6 +37,14 @@ public interface RealEstateRepository {
 //	update 쿼리	
 	public int upDateRealEstate(RealEstate realEstate);
 	
+//	update 쿼리 풀이
+//	전달받은 id와 일치하는 매물정보의 type과 가격을 전달 받은 값으로 수정	
+//	public int updateRealEstate(
+//			@Param("id") int id
+//			, @Param("type") String type
+//			, @Param("price") int price);	
+	
+	
 //	delete 쿼리
 	public int deleteRealEstate(@Param("id") int id);
 	

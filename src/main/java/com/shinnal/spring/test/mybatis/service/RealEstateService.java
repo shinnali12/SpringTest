@@ -76,11 +76,28 @@ public class RealEstateService {
 //	update 쿼리
 	public int upDateRealEstate(RealEstate realEstate) {
 		
+
+		
 		int count = realEstateRepository.upDateRealEstate(realEstate);
 		
 		return count;
 		
 	}
+
+	
+//	update 쿼리 풀이	
+//	전달받은 id와 일치하는 매물정보의 type과 가격을 전달 받은 값으로 수정
+//	
+//	public int updateRealEstate(int id, String type, int price) {
+//		
+//		int count = realEstateRepository.updateRealEstate(id, type, price);
+//		
+//		return count;
+//		
+//	}
+	
+	
+	
 	
 //	delete 쿼리
 	public int deleteRealEstate(int id) {

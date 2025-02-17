@@ -106,7 +106,7 @@
  		)
  	</insert>
  	
- 	<update id="upDateRealEstate" parameterType="com.shinnal.spring.test.mybatis.domain.RealEstate">
+  	<update id="upDateRealEstate" parameterType="com.shinnal.spring.test.mybatis.domain.RealEstate">
  		UPDATE `real_estate` 
  		SET `type` = #{type}
  			, `price` = #{price}
@@ -115,9 +115,20 @@
  	
  	</update>
  	
- 	<delete id="deleteRealEstate" parameterType="map">
- 		DELETE
- 		FROM `real_estate`
+<!--update 쿼리 풀이
+	<update id="updateRealEstate" parameterType="map">
+ 		UPDATE `real_estate` 
+ 		SET `type` = #{type}
+ 			, `price` = #{price}
+ 			, `updatedAt` = now() 
+ 		WHERE `id`= #{id}
+ 	</update>  -->
+ 	
+ 	
+ 	
+ 	
+ 	<delete id="deleteRealEstate" parameterType="int">
+ 		DELETE FROM `real_estate`
  		WHERE `id` = #{id}
  	</delete>
  	
