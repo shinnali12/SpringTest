@@ -74,9 +74,18 @@ public class RealEstateService {
 	
 	
 //	update 쿼리
-	public int addRealEstateUpdate(RealEstate realEstate) {
+	public int upDateRealEstate(RealEstate realEstate) {
 		
 		int count = realEstateRepository.upDateRealEstate(realEstate);
+		
+		return count;
+		
+	}
+	
+//	delete 쿼리
+	public int deleteRealEstate(int id) {
+		
+		int count = realEstateRepository.deleteRealEstate(id);
 		
 		return count;
 		

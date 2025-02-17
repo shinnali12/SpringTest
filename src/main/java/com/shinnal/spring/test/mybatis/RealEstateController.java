@@ -94,10 +94,29 @@ public class RealEstateController {
 	
 //	update 쿼리
 	
+	@ResponseBody
+	@RequestMapping("/update/1")
 	public String realEstateUpdate() {
 		
-		
+		RealEstate realEstate = new RealEstate();
+		realEstate.setId(21); 
+		realEstate.setType("전세");
+		realEstate.setPrice(70000);	
+				
+		int count = realEstateService.upDateRealEstate(realEstate);
+				
+		return "수정 성공 : " + count;		
+				
 	}
 	
+//	delete 쿼리	
+	@ResponseBody
+	@RequestMapping("/delete/1")
+	public String realEstateDelete(@RequestParam("id") int id) {
+		
+		int count = realEstateService.deleteRealEstate(id);
+		
+		return "삭제 성공 : " + count;
+	}
 
 }

@@ -106,10 +106,20 @@
  		)
  	</insert>
  	
- 	<insert id="upDateRealEstate" parameterType="com.shinnal.spring.test.mybatis.domain.RealEstate">
- 		UPDATE `real_estate` SET `type` = '전세', `price` = '70000', WHERE `id`= 21
+ 	<update id="upDateRealEstate" parameterType="com.shinnal.spring.test.mybatis.domain.RealEstate">
+ 		UPDATE `real_estate` 
+ 		SET `type` = #{type}
+ 			, `price` = #{price}
+ 			, `updatedAt` = now() 
+ 		WHERE `id`= #{id}
  	
- 	</insert>
+ 	</update>
+ 	
+ 	<delete id="deleteRealEstate" parameterType="map">
+ 		DELETE
+ 		FROM `real_estate`
+ 		WHERE `id` = #{id}
+ 	</delete>
  	
  	 
  </mapper>
