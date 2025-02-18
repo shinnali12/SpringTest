@@ -39,5 +39,20 @@
  			1		
  	
  	</select>
+ 	
+ 	<select id="selectSeller" resultType="com.shinnal.spring.test.mvc.domain.Seller" parameterType="int">
+ 		
+ 		SELECT
+ 			`id`
+ 			, `nickname`
+ 			, `temperature`
+ 			, `profileImage`
+ 			, `createdAt`
+ 			, `updatedAt`
+ 		FROM
+ 			`seller`
+ 		WHERE	
+ 			`id` = #{id}
+ 	</select>
  
  </mapper>

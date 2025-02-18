@@ -9,9 +9,9 @@
 
 	<div class="container">
 		<h2>판매자 정보</h2>
-		<img width="200px" src="https://cdn.pixabay.com/photo/2023/12/14/16/39/robot-8449206_1280.jpg"> <!-- th:text=${seller.profileImage}...???? -->
+		<img width="200px" th:src="${seller.profileImage}" src="#">
 		<div class="display-4" th:text="${seller.nickname}">닉네임</div>
-		<h4 class="text-warning font-weight-bold" th:text="${seller.temperature}">온도</h4>
+		<h4 class="text-warning font-weight-bold" th:text="${seller.temperature}">매너 온도</h4>
 	</div>
 
 	<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
