@@ -46,21 +46,21 @@ public class sellerController {
 	
 	
 	
-	// 2. info 검색 결과
-	@GetMapping("/info")
-	public String infoSeller(Model model) {
-				
-		Seller seller = sellerService.getLastSeller(); 
-		
-		model.addAttribute("seller", seller); // 모델에 멤버변수를 담아 html에서 꺼내쓸 수 있게 한다!!! ("키", 변수)
-		
-		return "mvc/SellerInfo";
-	}
+//	// 2. info 검색 결과
+//	@GetMapping("/info")
+//	public String infoSeller(Model model) {
+//				
+//		Seller seller = sellerService.getLastSeller(); 
+//		
+//		model.addAttribute("seller", seller); // 모델에 멤버변수를 담아 html에서 꺼내쓸 수 있게 한다!!! ("키", 변수)
+//		
+//		return "mvc/SellerInfo";
+//	}
 	
 	// 3. id 파라미터 받아 결과 출력 / 없는 경우 처리가 가능하도록!!
 	
 	@GetMapping("/infoparam")
-	public String sellerSelect(@RequestParam("id")int id, Model model) {
+	public String sellerSelect(@RequestParam(value = "id", required = false, defaultValue="0")int id, Model model) {
 		
 		Seller seller = sellerService.getSeller(id);
 		
