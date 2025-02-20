@@ -46,7 +46,7 @@ public class sellerController {
 	
 	
 	
-//	// 2. info 검색 결과
+	// 2. info 검색 결과
 //	@GetMapping("/info")
 //	public String infoSeller(Model model) {
 //				
@@ -57,16 +57,26 @@ public class sellerController {
 //		return "mvc/SellerInfo";
 //	}
 	
+	
 	// 3. id 파라미터 받아 결과 출력 / 없는 경우 처리가 가능하도록!!
 	
-	@GetMapping("/infoparam")
-	public String sellerSelect(@RequestParam(value = "id", required = false, defaultValue="0")int id, Model model) {
+	@GetMapping("/info")
+	public String infoSeller(@RequestParam(value = "id", required = false) Integer id
+			, Model model) {
 		
-		Seller seller = sellerService.getSeller(id);
+		Seller seller = null;
+		
+		if(id == null) {
+			seller = sellerService.getLastSeller();
+		} else {
+			seller = sellerService.getSeller(id);
+		}
+		
 		
 		model.addAttribute("seller", seller);
 		
 		return "mvc/SellerInfo";
+		
 	}
 	
 	
