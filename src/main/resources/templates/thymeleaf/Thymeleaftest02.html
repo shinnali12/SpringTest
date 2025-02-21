@@ -48,15 +48,29 @@
 				<tr th:each="member:${membership}"> <!-- 반복 -->
 					<td th:text="${member.name}">이름</td>
 					<td th:text="${member.phoneNumber}">전화번호</td>
-					<th:block th:switch="${member.grade}"> <!-- 조건 -->
+				
+					 <!-- 조건 -->
+				<!-- <th:block th:switch="${member.grade}">
 						<td th:case="VIP" style="color:red">VIP</td>
 						<td th:case="GOLD" style="color:gold">GOLD</td>
 						<td th:case="BASIC">BASIC</td>
-					</th:block>
-					<th:block>
+					</th:block> -->
+					
+					<td th:switch="${member.grade}">
+						<span th:case="VIP" class="text-danger">VIP</span>
+						<span th:case="GOLD" class="text-warning">GOLD</span>
+						<span th:case="*">BASIC</span>
+					</td>
+					
+					<td>
+						<span th:if="${member.point >= 5000}" class="text-primary" th:text="|${member.point} P|">포인트</span>
+						<span th:unless="${member.point >= 5000}" th:text="|${member.point} P|">포인트</span>
+					</td>
+					
+				<!-- <th:block>
 						<td th:if="${member.point >= 5000}" style="color:blue" th:text="|${member.point} P|">포인트</td>
 						<td th:unless="${member.point >= 5000}" th:text="|${member.point} P|">포인트</td>
-					</th:block>
+					</th:block> -->
 				</tr>			
 			</tbody>
 		</table>
