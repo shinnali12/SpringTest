@@ -43,5 +43,27 @@
  			, #{windSpeed}
  		)
  	</insert>
+ 	
+ 	<insert id="insertWeatherByObject" parameterType="com.shinnal.spring.test.thymeleaf.domain.Weather">
+ 		INSERT INTO
+ 			`weatherhistory`
+ 		(	
+ 			`date`
+ 			, `weather`
+ 			, `temperatures`
+ 			, `precipitation`
+ 			, `microDust`
+ 			, `windSpeed`
+ 		)	
+ 		VALUES
+ 		(
+ 			#{date}
+ 			, #{weather}
+ 			, #{temperatures}
+ 			, #{precipitation}
+ 			, #{microDust}
+ 			, #{windSpeed}
+ 		)
+ 	</insert>
  
  </mapper>
