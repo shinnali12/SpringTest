@@ -1,1 +1,35 @@
 @charset "UTF-8";
+
+#wrap {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+nav {
+	width: 200px;	
+	background-color: cornflowerblue;
+}
+
+.logl {
+	height: 100px;
+}
+
+.contents {
+	
+	width: 1000px;
+}
+
+footer {
+	
+	height: 100px;
+}
+
+.footer-Logl {
+	
+	width: 200px;
+	filter: grayscale(100%)
+}
+.footer-info {
+	width: 1000px;
+}
+
