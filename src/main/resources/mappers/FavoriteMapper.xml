@@ -23,4 +23,12 @@
  		)
  	</insert>
  
+ 	<select id="selectFavorite" resultType="com.shinnal.spring.test.ajax.domain.Favorite">
+ 		SELECT
+ 			`name`
+ 			, `url`
+ 		FROM
+ 			`favorite`
+ 			
+ 	</select>
  </mapper>
