@@ -30,4 +30,19 @@ public class FavoriteService {
 		return favorite;
 	}
 	
+	// 중복 체크
+	
+	public boolean isDuplicateUrl(String url) {
+		
+		int count = favoriteRepository.selectCountUrl(url);
+		
+		if(count == 0) {
+			return false; // 중복된게 없음
+		} else {
+			return true; // 중복된게 1개이상 있음
+		}
+		
+		
+	}
+	
 }

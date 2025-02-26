@@ -25,10 +25,26 @@
  
  	<select id="selectFavorite" resultType="com.shinnal.spring.test.ajax.domain.Favorite">
  		SELECT
- 			`name`
+ 			`id`
+ 			, `name`
  			, `url`
+ 			, `createdAt`
+ 			, `updatedAt`
  		FROM
  			`favorite`
+ 		ORDER BY
+ 			`id` DESC	
  			
  	</select>
+ 	
+ 	<select id="selectCountUrl" parameterType="String" resultType="int">
+ 		SELECT
+ 			count(*)
+ 		FROM
+ 			`favorite`
+ 		WHERE
+ 			`url` = #{url}
+ 	
+ 	</select>
+ 	
  </mapper>

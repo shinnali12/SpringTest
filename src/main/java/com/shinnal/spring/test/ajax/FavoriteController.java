@@ -23,15 +23,20 @@ public class FavoriteController {
 	@Autowired
 	private FavoriteService favoriteService;
 	
+	// 사이트 이름과 URL을 전달받고 저장하는 API
+	
 	@ResponseBody
 	@PostMapping("/create")
 	public Map<String, String> createFavorite(
 			@RequestParam("name") String name
 			, @RequestParam("url") String url) {
 		
-		Map<String, String> favoriteMap = new HashMap<>();
+		
 		int count = favoriteService.addFavorite(name, url);
 		
+		// 성공 {"result":"success"} ;  실패 {"result":"fail"}
+		
+		Map<String, String> favoriteMap = new HashMap<>();
 		if(count == 1) {
 			favoriteMap.put("result", "success");
 		} else {
@@ -58,5 +63,28 @@ public class FavoriteController {
 		
 		return "ajax/FavoriteInfo";
 	}
+	
+	
+	// 중복체크
+	
+	@ResponseBody
+	@GetMapping("/duplicate-url")
+	public Map<String, Boolean> isDuplicateUrl(@RequestParam("url") String url) {
+		
+		boolean isDuplicate = favoriteService.isDuplicateUrl(url);
+		
+		Map<String, Boolean> duplicateMap = new HashMap<>();
+		
+		if(isDuplicate) { // 중복됨
+			duplicateMap.put("isDuplicate", true);
+		} else { // 중복안됨
+			duplicateMap.put("isDuplicate", false);
+		}
+		
+		return duplicateMap;	
+		
+	}
+	
+	
 	
 }

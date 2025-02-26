@@ -15,4 +15,9 @@ public interface FavoriteRepository {
 	
 	public List<Favorite> selectFavorite();
 	
+	
+	// 중복체크- 파라미터로 전달 -> 일치 갯수 조회
+	
+	public int selectCountUrl(@Param("url") String url);
+	
 }
