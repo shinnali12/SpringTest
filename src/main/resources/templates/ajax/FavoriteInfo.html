@@ -21,11 +21,12 @@
 			</thead>
 	
 			<tbody> 
-				<tr th:each="favorite, status:${favorite}" id="deleteTable">
-					 <td th:text="${status.count}">No.</td>				
+				<tr th:each="favorite:${favorite}" class="deleteTable">
+					 <td th:text="${favorite.id}">No.</td>				
 					 <td th:text="${favorite.name}">이름</td>
 					 <td th:text="${favorite.url}">주소</td>
-					 <td> <button type="button" class="btn btn-danger btn-sm delete-Btn">삭제</button></td>
+					 <td> <button type="button" class="btn btn-danger btn-sm delete-Btn" th:data-favorite-id="${favorite.id}">삭제</button></td>
+					 <!-- th:value="${favorite.id}" 버튼에 값(pirmary key)을 부여하여 불러와 작업하기 / data 속성은 표준이 아닌 속성이나, 표준 HTML 요소에 추가 정보를 저장할 수 있게 도와줌  -->
 				</tr>
 			</tbody>
 		</table>
@@ -37,8 +38,30 @@
 	$(function() {
 		
 		$(".delete-Btn").on("click", function() {
-			alert();
 			
+			// 어떤 버튼 태그 객체에 이벤트가 발생했는지 확인
+			// 이벤트가 발생한 태그 객체 
+			// let id = $(this).val();
+				
+			let id = $(this).data("favorite-id");
+							
+			$.ajax({
+				type:"get"
+				, url:"/ajax/favorite/delete"
+				, data:{"id":id}
+				, success:function(response) {
+					
+					if(response.result =='success') {
+						location.reload(); // 해당페이지 새로고침
+					}else {
+						alert("삭제 실패");
+					}
+				}
+				, error:function(response) {
+					alert("삭제 에러!");		
+				}
+				
+			})
 			
 			
 		});

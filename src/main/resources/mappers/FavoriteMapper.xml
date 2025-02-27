@@ -29,7 +29,7 @@
  			, `name`
  			, `url`
  			, `createdAt`
- 			, `updateAt`
+ 			, `updatedAt`
  		FROM
  			`favorite`
  		ORDER BY
@@ -48,8 +48,10 @@
  	</select>
  	
  	<delete id="deleteFavorite" parameterType="int">
- 		DELETE FROM `favorite`
- 		WHERE `id` = #{id}
+ 		DELETE FROM
+ 			 `favorite`
+ 		WHERE
+ 			 `id` = #{id}
  	</delete>
  	
  	

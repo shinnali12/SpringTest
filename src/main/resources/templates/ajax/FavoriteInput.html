@@ -14,11 +14,11 @@
 	<label>제목</label><input type="text" class="form-control mb-3" id="nameInput">
 	<label>주소</label>
 		<div class="d-flex">
-			<input type="text" class="form-control mb-3 col-11" id="urlInput">
-			<button type="button" class="form-control btn btn-info col-1 ml-1" id="duplicateBtn">중복확인</button>			
+			<input type="text" class="form-control mb-3" id="urlInput">
+			<button type="button" class="form-control btn btn-info col-1 ml-3" id="duplicateBtn">중복확인</button>			
 		</div>
 		<div class="text-danger d-none" id="resultTrue">중복된 url 입니다.</div>
-		<div class="text-danger d-none" id="resultFalse">저장 가능한 url 입니다.</div>
+		<div class="text-success d-none" id="resultFalse">저장 가능한 url 입니다.</div>
 	<button type="button" class="form-control btn btn-success" id="inputBtn">추가</button>
 
 
@@ -38,7 +38,7 @@
 				}
 				
 				$.ajax({
-					type:"get"
+					type:"post"
 					, url:"/ajax/favorite/duplicate-url"
 					, data:{"url":url}
 					, success:function(reponse) {

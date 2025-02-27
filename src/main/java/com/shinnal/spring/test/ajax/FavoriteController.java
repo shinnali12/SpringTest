@@ -66,34 +66,46 @@ public class FavoriteController {
 	
 	
 	// 중복체크
-	
+	// API
 	@ResponseBody
-	@GetMapping("/duplicate-url")
+	@PostMapping("/duplicate-url")
 	public Map<String, Boolean> isDuplicateUrl(@RequestParam("url") String url) {
 		
 		boolean isDuplicate = favoriteService.isDuplicateUrl(url);
 		
 		Map<String, Boolean> duplicateMap = new HashMap<>();
 		
-		if(isDuplicate) { // 중복됨
-			duplicateMap.put("isDuplicate", true);
-		} else { // 중복안됨
-			duplicateMap.put("isDuplicate", false);
-		}
+		duplicateMap.put("isDuplicate", isDuplicate);
+		
+		
+//		if(isDuplicate) { // 중복됨
+//			duplicateMap.put("isDuplicate", true);
+//		} else { // 중복안됨
+//			duplicateMap.put("isDuplicate", false);
+//		}
 		
 		return duplicateMap;	
 		
 	}
 	
-	// 테이블내용 삭제
+	// 테이블내용 삭제 API
 	
 	@ResponseBody
 	@GetMapping("/delete")
-	public String deleteFavorite(@RequestParam("id") int id) {
+	public Map<String, String> deleteFavorite(@RequestParam("id") int id) {
 		
 		int count = favoriteService.deleteFavorite(id);
-				
-		return "redirect:/ajax/favorite/info";
+		
+		// 성공 {"result":"success"} ;  실패 {"result":"fail"}
+		
+		Map<String, String> deletefavoriteMap = new HashMap<>();
+		if(count == 1) {
+			deletefavoriteMap.put("result", "success");
+		} else {
+			deletefavoriteMap.put("result", "fail");
+		}
+		
+		return deletefavoriteMap;
 		
 	}
 	

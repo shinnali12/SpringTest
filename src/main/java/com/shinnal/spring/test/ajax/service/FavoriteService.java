@@ -36,11 +36,15 @@ public class FavoriteService {
 		
 		int count = favoriteRepository.selectCountUrl(url);
 		
-		if(count == 0) {
-			return false; // 중복된게 없음
-		} else {
-			return true; // 중복된게 1개이상 있음
-		}
+		return count != 0; // count 값이 0이 아니면 true이므로 리턴하여 true/false 값을 전달한다. 
+		
+		
+		
+//		if(count == 0) {
+//			return false; // 중복된게 없음
+//		} else {
+//			return true; // 중복된게 1개이상 있음
+//		}
 		
 	}
 	

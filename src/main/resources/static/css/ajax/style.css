@@ -1,0 +1,63 @@
+@charset "UTF-8";
+
+#wrap {
+
+    width: 1200px;
+
+    margin: 0 auto;
+
+}
+
+
+
+header {
+
+    height: 100px;
+
+}
+
+
+
+.main-menu {
+
+    height: 40px;
+
+    background-color:peru;
+
+}
+
+
+
+.contents > .sub-logo {
+
+    height:300px;
+
+    background-color:sienna;
+
+}
+
+.contents > .reservation {
+
+    height:300px;
+
+    background-color:darkorange;
+
+}
+
+
+
+.contents > .inquiry {
+
+    height:300px;
+
+    background-color:sienna;
+
+}
+
+
+
+footer {
+
+    height: 100px;
+
+}
