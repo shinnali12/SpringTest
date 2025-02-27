@@ -21,8 +21,8 @@
 			</thead>
 	
 			<tbody> 
-				<tr th:each="favorite:${favorite}">
-					 <td th:text="${favorite.id}">No.</td>				
+				<tr th:each="favorite, status:${favorite}" id="deleteTable">
+					 <td th:text="${status.count}">No.</td>				
 					 <td th:text="${favorite.name}">이름</td>
 					 <td th:text="${favorite.url}">주소</td>
 					 <td> <button type="button" class="btn btn-danger btn-sm delete-Btn">삭제</button></td>
@@ -37,7 +37,10 @@
 	$(function() {
 		
 		$(".delete-Btn").on("click", function() {
-			alert();	
+			alert();
+			
+			
+			
 		});
 	})	
 	</script>

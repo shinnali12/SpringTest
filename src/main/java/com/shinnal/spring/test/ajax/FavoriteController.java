@@ -85,6 +85,18 @@ public class FavoriteController {
 		
 	}
 	
+	// 테이블내용 삭제
+	
+	@ResponseBody
+	@GetMapping("/delete")
+	public String deleteFavorite(@RequestParam("id") int id) {
+		
+		int count = favoriteService.deleteFavorite(id);
+				
+		return "redirect:/ajax/favorite/info";
+		
+	}
+	
 	
 	
 }

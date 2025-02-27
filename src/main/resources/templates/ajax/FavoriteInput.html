@@ -15,10 +15,10 @@
 	<label>주소</label>
 		<div class="d-flex">
 			<input type="text" class="form-control mb-3 col-11" id="urlInput">
-			<button type="button" class="form-control btn btn-info col-1 ml-1" id="duplicateBtn">중복확인</button>
-			<div class="text-danger" id="resultTrue">중복된 url 입니다.</div>
-			<div class="text-danger" id="resultFalse">저장 가능한 url 입니다.</div>
+			<button type="button" class="form-control btn btn-info col-1 ml-1" id="duplicateBtn">중복확인</button>			
 		</div>
+		<div class="text-danger d-none" id="resultTrue">중복된 url 입니다.</div>
+		<div class="text-danger d-none" id="resultFalse">저장 가능한 url 입니다.</div>
 	<button type="button" class="form-control btn btn-success" id="inputBtn">추가</button>
 
 
@@ -31,8 +31,6 @@
 			
 			$("#duplicateBtn").on("click", function() {
 				let url = $("#urlInput").val();
-				let reusltTrue = $("#resultTrue").val();
-				let reusltFlase = $("#resultFalse").val();
 				
 				if(url == "") {
 					alert("주소를 입력하세요");
@@ -45,12 +43,12 @@
 					, data:{"url":url}
 					, success:function(reponse) {
 						
-						if(reponse.isDuplicate) { // true
-							resultTrue.show()
-							resultFalse.hide();
-						} else { // false
-							resultTrue.hide()
-							resultFalse.show();
+						if(reponse.isDuplicate) { // true 중복됨
+							$("#resultTrue").removeClass("d-none"); // 화면안보임 제거 - 화면표출
+							$("#resultFalse").addClass("d-none"); // 화면안보임 추가 - 화면 표출안함
+						} else { // false 중복안됨
+							$("#resultTrue").addClass("d-none");
+							$("#resultFalse").removeClass("d-none");
 						}
 						
 					}
@@ -59,41 +57,6 @@
 					}
 					
 				});
-				
-				// 2. 제이쿼리 test02 파일
-                   //$("input[name=job]").on("change", function() {
-                	   //let job= $(this).val();                    
-
-                    //if(job == "student") {
-                    	   // $("#workerInput").hide();
-                        // $("#studentInput").show();
-                        // $("#jobLabel").text("학교명")
-                        //                    }else {                        
-                    	   //  $("#studentInput").hide();
-                        //          $("#workerInput").show();
-                        // $("#jobLabel").text("회사명")
-                        //       }
-
-                    //    })
-
-
-                // 3.
-                //   $("#allCheck").on("change", function() {
-                    // 이벤트가 발생한 태그 객체로 부터 체크 상태를 얻어 온다.
-
-                   //    $("input[name=check]").prop("checked", $(this).is(":checked"));   
-
-
-                    // if($(this).is(":checked")) {
-                    //     $("input[name=check]").prop("checked", true);
-                    // } else {
-                    //     $("input[name=check]").prop("checked", false);
-                    // }
-                    
-               // });
-				
-				
-				
 				
 			});
 			

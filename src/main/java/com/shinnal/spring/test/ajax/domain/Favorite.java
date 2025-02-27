@@ -8,7 +8,7 @@ public class Favorite {
 	private String name;
 	private String url;
 	private LocalDateTime createdAt;
-	private LocalDateTime updatedAt;
+	private LocalDateTime updateAt;
 	public int getId() {
 		return id;
 	}
@@ -33,12 +33,14 @@ public class Favorite {
 	public void setCreatedAt(LocalDateTime createdAt) {
 		this.createdAt = createdAt;
 	}
-	public LocalDateTime getUpdatedAt() {
-		return updatedAt;
+	public LocalDateTime getUpdateAt() {
+		return updateAt;
 	}
-	public void setUpdatedAt(LocalDateTime updatedAt) {
-		this.updatedAt = updatedAt;
+	public void setUpdateAt(LocalDateTime updateAt) {
+		this.updateAt = updateAt;
 	}
+	
+	
 	
 	
 	

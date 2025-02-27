@@ -29,7 +29,7 @@
  			, `name`
  			, `url`
  			, `createdAt`
- 			, `updatedAt`
+ 			, `updateAt`
  		FROM
  			`favorite`
  		ORDER BY
@@ -46,5 +46,11 @@
  			`url` = #{url}
  	
  	</select>
+ 	
+ 	<delete id="deleteFavorite" parameterType="int">
+ 		DELETE FROM `favorite`
+ 		WHERE `id` = #{id}
+ 	</delete>
+ 	
  	
  </mapper>

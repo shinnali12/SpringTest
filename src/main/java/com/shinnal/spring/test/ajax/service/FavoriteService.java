@@ -42,7 +42,18 @@ public class FavoriteService {
 			return true; // 중복된게 1개이상 있음
 		}
 		
+	}
+	
+		
+	// 테이블내용 삭제
+	
+	public int deleteFavorite(int id) {
+		
+		int count = favoriteRepository.deleteFavorite(id);
+		
+		return count;
 		
 	}
+	
 	
 }

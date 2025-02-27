@@ -20,4 +20,8 @@ public interface FavoriteRepository {
 	
 	public int selectCountUrl(@Param("url") String url);
 	
+	// 테이블 내용 삭제
+	
+	public int deleteFavorite(@Param("id") int id);
+	
 }
