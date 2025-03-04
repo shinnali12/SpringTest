@@ -3,12 +3,15 @@ package com.shinnal.spring.test.ajax.domain;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class Booking {
 	
 	private int id;
 	private String name;
 	private int headcount;
 	private int day;
+	@DateTimeFormat(pattern="yyyy년 M월 d일")
 	private LocalDate date;
 	private String phoneNumber;
 	private String state;
@@ -72,5 +75,6 @@ public class Booking {
 		this.updatedAt = updatedAt;
 	}
 	
-
+	
+	
 }
