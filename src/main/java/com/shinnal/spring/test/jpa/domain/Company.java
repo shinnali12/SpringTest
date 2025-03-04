@@ -40,4 +40,5 @@ public class Company {
 	@UpdateTimestamp
 	LocalDateTime updatedAt;
 
+
 }
