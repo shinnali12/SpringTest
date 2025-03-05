@@ -1,5 +1,8 @@
 package com.shinnal.spring.test.jpa;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,21 +21,27 @@ public class CompanyController {
 	
 	@ResponseBody
 	@GetMapping("/create")
-	public Company createCompany() {
+	public List<Company> createCompany() {
 
 		// "넥손", "컨텐츠 게임", "대기업", 3585
 		// "버블팡", "여신 금융업", "대기업", 6834
 		
-		Company company = companyService.addCompany("버블팡", "여신 금융업", "대기업", 6834);
-				
-		return company;
+		List<Company> companyList = new ArrayList<>();
+		
+		Company company = companyService.addCompany("넥손", "컨텐츠 게임", "대기업", 3585);
+		companyList.add(company);
+		
+		company = companyService.addCompany("버블팡", "여신 금융업", "대기업", 6834);
+		companyList.add(company);
+		
+		return companyList;
 	}
 	
 	@ResponseBody
 	@GetMapping("/update")
 	public Company updateCompany() {
 		
-		Company company = companyService.updateCompany(8, "중소기업", 34);
+		Company company = companyService.updateCompany(11, "중소기업", 34);
 		
 		return company;
 	}

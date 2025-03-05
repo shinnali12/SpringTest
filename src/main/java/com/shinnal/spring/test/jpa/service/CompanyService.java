@@ -37,13 +37,19 @@ public class CompanyService {
 		
 		Optional<Company> optionalCompany = companyRepository.findById(id); // id조회
 		
-		Company company = optionalCompany.orElse(null); // null 처리
+		if(optionalCompany.isPresent()) {// null의 값을 보여줌
+			Company company = optionalCompany.get();
+			
+			// Company company = optionalCompany.orElse(null); // null 처리
+			
+			company = company.toBuilder().scale(scale).headcount(headcount).build(); // 정보 수정
+			
+			Company result = companyRepository.save(company); // 수정된 정보 적용
+			
+			return result;
+		}
 		
-		company = company.toBuilder().scale(scale).headcount(headcount).build(); // 정보 수정
-		
-		Company result = companyRepository.save(company); // 수정된 정보 적용
-		
-		return result;
+		return null;
 		
 	}
 	
@@ -51,9 +57,17 @@ public class CompanyService {
 		
 		Optional<Company> optionalCompany = companyRepository.findById(id); // id조회
 
-		Company company = optionalCompany.orElse(null); // null 처리
+		//Company company = optionalCompany.orElse(null); // null 처리
 		
-		companyRepository.delete(company); // 삭제
+//		if(optionalCompany.isPresent()) {
+//			Company company = optionalCompany.get();
+//			companyRepository.delete(company); // 삭제
+//		}
+		
+		// 람다식 표현 - 자바의 메소드를 간결한 함수식으로 표현 일급객체인 함수를 변수처럼 사용가능, 매개 변수로 전달이 가능
+		optionalCompany.ifPresent(company -> companyRepository.delete(company));
+		
+		
 		
 	}
 	
