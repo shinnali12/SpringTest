@@ -24,20 +24,18 @@ import lombok.NoArgsConstructor;
 @Entity
 public class Recruit {
 	
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Id // primarykey 설정값
+	@GeneratedValue(strategy=GenerationType.IDENTITY) // 기본값을 자동으로 생성
 	private int id;
-	private int companyId;
 	
-	@Column(name="position")
+	@Column(name="companyId")
+	private int companyId;
 	private String position;
 	private String responsibilities;
 	private String qualification;
 	private String type;
 	private String region;
 	private int salary;
-	
-	@Column(name="deadline")
 	private String deadline;
 	
 	@Column(name="createdAt")
