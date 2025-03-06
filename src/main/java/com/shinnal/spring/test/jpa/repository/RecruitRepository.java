@@ -33,7 +33,7 @@ public interface RecruitRepository extends JpaRepository<Recruit, Integer> {
 	
 	// 7.
 	
-	@Query(value="SELECT * FROM `recruit` WHERE `deadline` > :deadline AND `salary` >= :salary AND `type` :type ORDER BY `salary` DESC", nativeQuery=true) // ":파라미터키" 입력하여 매칭되도록 하기!!!
+	@Query(value="SELECT * FROM `recruit` WHERE `deadline` > :deadline AND `salary` >= :salary AND `type`= :type ORDER BY `salary` DESC", nativeQuery=true) // ":파라미터키" 입력하여 매칭되도록 하기!!!
 	public List<Recruit> selectByNativeQuery(
 			@Param("deadline") LocalDate deadline
 			, @Param("salary") int salary
